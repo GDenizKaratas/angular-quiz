@@ -1,0 +1,14 @@
+<div>
+    <div class="question">{{(question$ |async)?.question}}</div>
+    <div class="answers">
+        <app-answer *ngFor="let answer of answers$|async; let i = index" [answerText]="answer" [index]="i"
+            [correctAnswer]="correctAnswer" [currentAnswer]="currentAnswer"
+            (selectAnswer)="selectAnswer($event)"
+            [ngClass]="{
+                answer: true, 
+                'correct-answer': isCorrectAnswer(answer), 
+                'wrong-answer': isWrongAnswer(answer), 
+                'diasbled-answer': isDisabledAnswer(answer)}">
+        </app-answer>
+    </div>
+</div>
